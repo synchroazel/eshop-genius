@@ -5,3 +5,4 @@ flask_sqlalchemy==2.5.1
 nintendeals==3.0.0
 SQLAlchemy==1.4.39
 Werkzeug==2.1.1
+gunicorn==19.9.0
