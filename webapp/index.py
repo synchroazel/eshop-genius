@@ -5,7 +5,7 @@ from eshop_handlers import get_game_info
 from webapp import db
 from .models import Wishlist
 
-#app = Flask(__name__)
+app = Flask(__name__)
 
 views = Blueprint('views', __name__)
 
