@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content%} <br>
+
+<h3 class="display-3">Your wishlist</h3>
+
+<h6>&emsp;Hello {{user.username}}! Here's your wishlist:</h6>
+<br>
+
+{% for game in payload %}
+
+{% if game['in_sale'] %}
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">{{game['title']}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Currently in sale, with {{game['discount']}} discount!</h6>
+        <p class="my-3 card-text">Current price: <b>{{game['current_price']}}</b>&emsp;<del>{{game['price']}}
+            <del>
+        </p>
+
+        <form method="POST">
+
+            <a href={{game['link']}} class="btn btn-info btn-sm">
+                <span class="glyphicon glyphicon-th-list"></span> buy game
+            </a>
+
+            <button type="submit"
+                    id="remove_game"
+                    name="remove_game"
+                    class="btn btn-danger btn-sm"
+                    value={{game['game_id']}}>
+                remove
+            </button>
+
+        </form>
+
+    </div>
+    <div class="card-footer text-muted">In sale from {{game['sale_start']}} until {{game['sale_end']}}. You have <b>{{game['daysleft']}}
+        days left!</b></div>
+</div>
+
+{% else %}
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">{{game['title']}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Not currently in sale.</h6>
+        <p class="my-3 card-text">Current price: <b>{{game['price']}}</b></p>
+
+        <form method="POST">
+
+            <a href={{game['link']}} class="btn btn-info btn-sm">
+                <span class="glyphicon glyphicon-th-list"></span> buy game
+            </a>
+
+            <button type="submit"
+                    id="remove_game"
+                    name="remove_game"
+                    class="btn btn-danger btn-sm"
+                    value={{game['game_id']}}>
+                remove
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endif %}
+
+<br>
+
+{% endfor %}
+
+{% endblock %}

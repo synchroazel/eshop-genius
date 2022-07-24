@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Search page{% endblock %}
+{% block content%}
+
+<form method="POST">
+    <br>
+    <h3 class="display-3">Search a game:</h3>
+    <br>
+
+    <div class="input-group mb-3">
+        <input
+                type="query"
+                class="form-control"
+                id="query"
+                name="query"
+                placeholder="enter a game title"
+        >
+        <div class="input-group-append">
+            &emsp14;&emsp14;<button class="btn btn-info" type="submit">search</button>
+        </div>
+    </div>
+
+
+</form>
+
+{% endblock %}

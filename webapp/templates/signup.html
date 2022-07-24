@@ -1,0 +1,58 @@
+{% extends "base.html" %} {% block title %}Sign Up{% endblock %} {% block content %}
+<form method="POST">
+
+
+    <br>
+    <h3 class="w-50">&emsp14;&emsp14;Sign up</h3>
+    <br>
+
+
+    <div class="input-group input-group-sm mb-3">
+
+        <div class="input-group-prepend col-1">
+            <span class="input-group-text" id="username_label">username</span>
+        </div>
+        <input
+                type="username"
+                class="form-control col-5"
+                id="username"
+                name="username"
+                placeholder="enter a username"
+        />
+    </div>
+
+    <div class="input-group input-group-sm mb-3">
+
+        <div class="input-group-prepend col-1">
+            <span class="input-group-text" id="password1_label">password</span>
+        </div>
+        <input
+                type="password"
+                class="form-control col-5"
+                id="password1"
+                name="password1"
+                placeholder="enter a password"
+        />
+    </div>
+
+    <div class="input-group input-group-sm mb-3">
+
+        <div class="input-group-prepend col-1">
+            <span class="input-group-text" id="password2_label">password</span>
+        </div>
+        <input
+                type="password"
+                class="form-control col-5"
+                id="password2"
+                name="password2"
+                placeholder="confirm password"
+        />
+    </div>
+
+    <div class="input-group-prepend col-2">
+        <button type="submit" class="btn btn-primary btn-sm col">sign up</button>
+    </div>
+
+
+</form>
+{% endblock %}

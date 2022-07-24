@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Results page{% endblock %}
+{% block content%}
+
+<br>
+<h3 class="display-3">Results:</h3>
+<br>
+
+{% for game in results %}
+
+
+<div class="card">
+    <div class="card-body">
+        <h6 class="mt-n2 card-title">{{game[0]}}</h6>
+        <form class="mb-n2 w3-wide" method="POST">
+            <button type="submit"
+                    class="btn btn-success btn-sm"
+                    id="chosen_game"
+                    name="chosen_game"
+                    value={{game[1]}}
+            >
+                add to wishlist
+            </button>
+        </form>
+    </div>
+</div>
+<br>
+
+
+<!--<form class="w3-wide" method="POST">-->
+<!--    {{game[0]}}&emsp;-->
+<!--    <button type="submit"-->
+<!--            class="btn btn-success btn-sm"-->
+<!--            id="chosen_game"-->
+<!--            name="chosen_game"-->
+<!--            value={{game[1]}}-->
+<!--    >-->
+<!--    add to wishlist-->
+<!--    </button>-->
+<!--</form>-->
+<!--<hr/>-->
+
+<!--<form class="w3-wide" method="POST">-->
+<!--    <button type="submit"-->
+<!--            id="chosen_game"-->
+<!--            name="chosen_game"-->
+<!--            class="btn btn-outline-dark"-->
+<!--            value={{game[1]}}>-->
+<!--        <p>{{game[0]}}</p>-->
+<!--    </button>-->
+<!--</form>-->
+<!--<br>-->
+
+{% endfor %}
+
+{% endblock %}
