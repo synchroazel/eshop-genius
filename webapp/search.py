@@ -16,7 +16,7 @@ def search_page():
     if request.method == 'POST':
         query = request.form.get('query')
 
-        global results
+        # global results
         results = search_game(query)  # the actual search
 
         if results == None:
@@ -25,6 +25,7 @@ def search_page():
         return redirect(url_for('search.results_page'))
     return render_template('search.html', user=current_user)
 
+# results = results
 
 @search.route('/results', methods=['GET', 'POST'])
 def results_page():
