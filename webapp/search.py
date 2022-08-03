@@ -16,7 +16,6 @@ def search_page():
 
     if request.method == 'POST':
 
-        global query
         query = request.form.get('query')
 
         global results
@@ -31,9 +30,6 @@ def search_page():
 
 @search.route('/results', methods=['GET', 'POST'])
 def results_page():
-
-    re_results = search_game(query)  # re-do search
-
     if request.method == 'POST':
 
         chosen_game_id = request.form["chosen_game"]
@@ -48,4 +44,4 @@ def results_page():
         except exc.IntegrityError:
             flash('Game already in your wishlist!', category='error')
 
-    return render_template('results.html', results=re_results, user=current_user)
+    return render_template('results.html', results=results, user=current_user)
