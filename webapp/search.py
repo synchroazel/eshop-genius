@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask import Blueprint, render_template, request, redirect, url_for, flash, session
 from flask_login import current_user
 from sqlalchemy import exc
 
@@ -21,6 +21,8 @@ def search_page():
         global results
         results = search_game(query)  # the actual search
 
+        session['results'] = search_game(query)
+
         return redirect(url_for('search.results_page'))
     return render_template('search.html', user=current_user)
 
@@ -41,9 +43,4 @@ def results_page():
         except exc.IntegrityError:
             flash('Game already in your wishlist!', category='error')
 
-    query = request.form.get('query')
-
-    global results
-    results = search_game(query)  # the actual search
-
-    return render_template('results.html', results=results, user=current_user)
+    return render_template('results.html', results=session['results'], user=current_user)
