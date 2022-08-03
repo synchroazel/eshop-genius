@@ -22,6 +22,9 @@ def search_page():
         global results
         results = search_game(query)  # the actual search
 
+        if results == None:
+            print('\n\n[DEBUG] `results` is None\n\n')
+
         return redirect(url_for('search.results_page'))
     return render_template('search.html', user=current_user)
 
