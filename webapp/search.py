@@ -9,9 +9,6 @@ from .models import Wishlist
 
 search = Blueprint('search', __name__)
 
-results = None
-
-
 @search.route('/search', methods=['GET', 'POST'])
 def search_page():
     user = User.query.filter_by(username=None).first()
@@ -35,7 +32,7 @@ def results_page():
 
         chosen_game_id = request.form["chosen_game"]
 
-        print(f'\n\n[INFO] You clicked on game {chosen_game_id}\n\n')
+        print(f'\n\n[DEBUG] You clicked on game {chosen_game_id}\n\n')
 
         try:
             new_wishlist = Wishlist(content=chosen_game_id, user_id=current_user.id)
