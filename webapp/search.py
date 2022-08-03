@@ -41,4 +41,9 @@ def results_page():
         except exc.IntegrityError:
             flash('Game already in your wishlist!', category='error')
 
-    # return render_template('results.html', results=results, user=current_user)
+    query = request.form.get('query')
+
+    global results
+    results = search_game(query)  # the actual search
+
+    return render_template('results.html', results=results, user=current_user)
