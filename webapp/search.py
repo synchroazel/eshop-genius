@@ -31,13 +31,14 @@ def search_page():
 
 @search.route('/results', methods=['GET', 'POST'])
 def results_page():
+
+    re_results = search_game(query)  # re-do search
+
     if request.method == 'POST':
 
         chosen_game_id = request.form["chosen_game"]
 
         print(f'\n\n[DEBUG] You clicked on game {chosen_game_id}\n\n')
-
-        re_results = search_game(query)  # re-do search
 
         try:
             new_wishlist = Wishlist(content=chosen_game_id, user_id=current_user.id)
