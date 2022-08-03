@@ -9,11 +9,14 @@ from .models import Wishlist
 
 search = Blueprint('search', __name__)
 
+
 @search.route('/search', methods=['GET', 'POST'])
 def search_page():
     user = User.query.filter_by(username=None).first()
 
     if request.method == 'POST':
+
+        global query
         query = request.form.get('query')
 
         global results
@@ -25,7 +28,6 @@ def search_page():
         return redirect(url_for('search.results_page'))
     return render_template('search.html', user=current_user)
 
-results = results
 
 @search.route('/results', methods=['GET', 'POST'])
 def results_page():
@@ -35,6 +37,8 @@ def results_page():
 
         print(f'\n\n[DEBUG] You clicked on game {chosen_game_id}\n\n')
 
+        re_results = search_game(query)  # re-do search
+
         try:
             new_wishlist = Wishlist(content=chosen_game_id, user_id=current_user.id)
             db.session.add(new_wishlist)
@@ -43,4 +47,4 @@ def results_page():
         except exc.IntegrityError:
             flash('Game already in your wishlist!', category='error')
 
-    return render_template('results.html', results=results, user=current_user)
+    return render_template('results.html', results=re_results, user=current_user)
