@@ -2,3 +2,4 @@ venv/
 .idea
 __pycache__/
 webapp/__pycache__/
+webapp/database.db
