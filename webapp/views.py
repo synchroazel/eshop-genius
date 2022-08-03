@@ -16,7 +16,7 @@ def home():
 
         Wishlist.query.filter_by(content=id_to_remove, user_id=current_user.id).delete()
         db.session.commit()
-        flash('Game successfully removed from your wishlist!', category='error')
+        flash('Game successfully removed from your wishlist!', category='success')
 
     user_wishlist = Wishlist.query.filter_by(user_id=current_user.id).all()
 
